@@ -1,5 +1,6 @@
 package com.example.hello.service.search;
 
+import com.example.hello.domain.TbSearch;
 import com.example.hello.domain.search.TbSearchRepository;
 import com.example.hello.utils.NaverApiSearch;
 import com.example.hello.web.dto.SearchSaveRequestDto;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +22,14 @@ public class SearchService {
 
     public String news(SearchSaveRequestDto requestDto) {
         return NaverApiSearch.newsApi(requestDto.getSearch());
+    }
+
+    public List<TbSearch> findAll() {
+        return tbSearchRepository.findAll();
+    }
+
+    public TbSearch findSearchRand() {
+        return tbSearchRepository.findSearchRand();
     }
 
 }
